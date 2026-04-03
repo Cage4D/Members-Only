@@ -1,0 +1,23 @@
+{
+  "name": "members-only",
+  "version": "1.0.0",
+  "description": "a basic auth project",
+  "homepage": "https://github.com/Cage4D/Members-Only#readme",
+  "bugs": {
+    "url": "https://github.com/Cage4D/Members-Only/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cage4D/Members-Only.git"
+  },
+  "license": "ISC",
+  "author": "Cage4D",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
