@@ -26,7 +26,7 @@ SignUpRouter.get("/", (req, res) => res.render("sign-up"))
 SignUpRouter.post("/", validateUser, async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-        return res.render("sign-up", { errors: errors.array(), data: req.body })
+        return res.status(400).render("sign-up", { errors: errors.array(), data: req.body })
     }
     try {
         const hashedPassword = await bcrypt.hash(req.body.password, 10)
