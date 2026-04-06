@@ -15,6 +15,7 @@ app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
 app.use(express.urlencoded({ extended: true }))
 app.use(session({ secret: "dogs", resave: false, saveUninitialized: false }))
+app.use(passport.initialize())
 app.use(passport.session())
 
 app.get("/", indexRouter)
@@ -26,7 +27,7 @@ passport.use(
         try {
             const { rows } = await pool.query("SELECT * FROM users WHERE username = $1", [username])
             const user = rows[0]
-            const match = bcrypt.compare(password, user.password)
+            const match = await bcrypt.compare(password, user.password)
 
             if (!user) {
                 return done(null, false, {message: "Incorrect username" })
