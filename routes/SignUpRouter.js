@@ -15,7 +15,7 @@ const validateUser = [
         .isAlpha()
         .withMessage("Last name must contain only letters")
         .isLength({ min: 2, max: 20 }),
-    body("username").trim().isEmail.withMessage("Not a valid email address"),
+    body("username").trim().isEmail().withMessage("Not a valid email address"),
     body("confirm-password").custom((value, {req}) => {
         if (value !== req.body.password) throw new Error("Passwords do not match");
         return true;
