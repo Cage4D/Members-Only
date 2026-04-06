@@ -19,6 +19,12 @@ app.use(passport.initialize())
 app.use(passport.session())
 
 app.get("/", indexRouter)
+app.get("/log-out", (req, res, next) => {
+    req.logOut((err) => {
+        if (err) next(err);
+        res.redirect("/log-in")
+    })
+})
 app.use("/log-in", LogInRouter)
 app.use("/sign-up", SignUpRouter)
 
