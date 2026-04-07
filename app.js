@@ -5,6 +5,7 @@ const path = require("node:path")
 const indexRouter = require("./routes/indexRouter")
 const LogInRouter = require("./routes/LogInRouter")
 const SignUpRouter = require("./routes/SignUpRouter")
+const JoinClubRouter = require("./routes/JoinClubRouter")
 const LocalStrategy = require("passport-local").Strategy
 const passport = require("passport")
 const pool = require("./data/pool")
@@ -27,6 +28,7 @@ app.get("/log-out", (req, res, next) => {
 })
 app.use("/log-in", LogInRouter)
 app.use("/sign-up", SignUpRouter)
+app.use("/join-club", JoinClubRouter)
 
 passport.use(
     new LocalStrategy(async (username, password, done) => {
