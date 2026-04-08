@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Club</title>
+</head>
+<body>
+    <form action="/join-club" method="POST">
+        <h2>Enter the secret passcode to join the exclusive private club</h2>
+        <label for="secretCode"></label>
+        <input type="password" id="secretCode" name="secretCode">
+        <button type="submit">Join</button>
+    </form>
+    <% if (error) {%>
+        <p style="color: red;"><%=  error %></p>
+    <%}%>
+</body>
+</html>
