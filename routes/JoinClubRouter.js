@@ -8,7 +8,10 @@ function ensureAuthenticated(req, res, next) {
     res.redirect("/log-in")
 }
 
-JoinClubRouter.get("/", ensureAuthenticated, (req, res) => res.render("join-club", { error: null }))
+JoinClubRouter.get("/", ensureAuthenticated, (req, res) => {
+    if (req.user.membership_status) return res.redirect("/");
+    res.render("join-club", { error: null })
+})
 JoinClubRouter.post("/", ensureAuthenticated,  async (req, res, next) => {
     try {
         if (req.body.secretCode !== secretCode) return res.render("join-club", { error: "Invalid Secret Code" })
