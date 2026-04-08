@@ -8,10 +8,10 @@ function ensureAuthenticated(req, res, next) {
     res.redirect("/log-in")
 }
 
-JoinClubRouter.get("/", ensureAuthenticated, (req, res) => res.render("join-club"))
+JoinClubRouter.get("/", ensureAuthenticated, (req, res) => res.render("join-club", { error: null }))
 JoinClubRouter.post("/", ensureAuthenticated,  async (req, res, next) => {
     try {
-        if (req.body.secretCode !== secretCode) return res.send("Invalid secret code")
+        if (req.body.secretCode !== secretCode) return res.render("join-club", { error: "Invalid Secret Code" })
         
         const result = await pool.query("UPDATE users SET membership_status  = $1 WHERE id = $2 RETURNING *", [
             true, req.user.id
@@ -22,6 +22,7 @@ JoinClubRouter.post("/", ensureAuthenticated,  async (req, res, next) => {
         }
 
         res.send("Membership activated")
+        res.redirect("/")
     } catch (err) {
         return next(err);
     }
