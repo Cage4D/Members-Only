@@ -31,4 +31,7 @@ JoinClubRouter.post("/", ensureAuthenticated,  async (req, res, next) => {
     }
 })
 
-module.exports = JoinClubRouter;
+module.exports = {
+    JoinClubRouter,
+    ensureAuthenticated,
+};

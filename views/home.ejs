@@ -13,6 +13,11 @@
         <% } else { %>
             <a href="/join-club">Join the Club</a>
         <% } %>
+        <% if (locals.user.is_admin) {%>
+            <button style="background-color: #212121; color: white; border: none; border-radius: 5px;">Admin</button>
+        <% } else { %>
+            <a href="/make-admin">PROMOTE TO ADMIN</a>
+        <% } %>
         <a href="/log-out">LOG OUT</a>
     <% } else { %>
         <h2>Welcome to the Members Only club!</h2>

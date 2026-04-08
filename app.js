@@ -5,12 +5,13 @@ const path = require("node:path")
 const indexRouter = require("./routes/indexRouter")
 const LogInRouter = require("./routes/LogInRouter")
 const SignUpRouter = require("./routes/SignUpRouter")
-const JoinClubRouter = require("./routes/JoinClubRouter")
+const JoinClubRouter = require("./routes/JoinClubRouter").JoinClubRouter
 const LocalStrategy = require("passport-local").Strategy
 const passport = require("passport")
 const pool = require("./data/pool")
 const session = require("express-session")
-const bcrypt = require("bcryptjs")
+const bcrypt = require("bcryptjs");
+const AdminRouter = require("./routes/AdminRouter");
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
@@ -29,6 +30,7 @@ app.get("/log-out", (req, res, next) => {
 app.use("/log-in", LogInRouter)
 app.use("/sign-up", SignUpRouter)
 app.use("/join-club", JoinClubRouter)
+app.use("/make-admin", AdminRouter)
 
 passport.use(
     new LocalStrategy(async (username, password, done) => {
