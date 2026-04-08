@@ -8,7 +8,11 @@
 <body>
     <% if (locals.user) {%>
         <h1>Welcome back <%= user.username%></h1>
-        <a href="/join-club">Join the Club</a>
+        <% if (locals.user.membership_status) { %>
+            <button style="background-color: dodgerblue; border: none; border-radius: 5px; color: white;">Member</button>
+        <% } else { %>
+            <a href="/join-club">Join the Club</a>
+        <% } %>
         <a href="/log-out">LOG OUT</a>
     <% } else { %>
         <h2>Welcome to the Members Only club!</h2>
