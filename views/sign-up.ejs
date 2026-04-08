@@ -11,3 +11,11 @@
     <input type="password" id="confirm-pwd" name="confirm-password" required>
     <button type="submit">Sign up</button>
 </form>
+
+<% if (errors && errors.length > 0) { %>
+  <ul style="list-style-type: none;">
+    <% errors.forEach(error => { %>
+      <li style="color: red;"><%= error.msg %></li>
+    <% }) %>
+  </ul>
+<% } %>
