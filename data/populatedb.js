@@ -61,7 +61,6 @@ async function insertSampleData() {
 async function main() {
   await createTables();
   await insertSampleData();
-  await pool.end();
 }
 
 main();
