@@ -50,7 +50,7 @@ passport.use(
             }
             return done(null, user)
         } catch(err) {
-            return done(null, err)
+            return done(err)
         }
     })
 )

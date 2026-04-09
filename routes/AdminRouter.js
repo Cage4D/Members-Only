@@ -4,8 +4,8 @@ const pool = require("../data/pool")
 const adminPasscode = "24680";
 const ensureAuthenticated = require("./JoinClubRouter").ensureAuthenticated
 
-AdminRouter.get("/", (req, res) => {
-    if (req.user.is_admin) return res.redirect("/")
+AdminRouter.get("/", ensureAuthenticated, (req, res) => {
+    if (!req.user.membership_status || req.user.is_admin) return res.redirect("/")
     res.render("make-admin", { error: null })
 })
 AdminRouter.post("/", ensureAuthenticated, async (req, res, next) => {
@@ -19,7 +19,6 @@ AdminRouter.post("/", ensureAuthenticated, async (req, res, next) => {
         if (result.rowCount === 0) {
             res.send("Cannot make admin")
         }
-        res.send("You're now an Admin")
         res.redirect("/")
     } catch (err) {
         return next(err)
