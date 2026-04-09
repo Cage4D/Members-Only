@@ -22,7 +22,7 @@ const validateUser = [
     })
 ]
 
-SignUpRouter.get("/", (req, res) => res.render("sign-up"))
+SignUpRouter.get("/", (req, res) => res.render("sign-up", { errors: null }))
 SignUpRouter.post("/", validateUser, async (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
