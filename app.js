@@ -21,7 +21,7 @@ app.use(session({ secret: "dogs", resave: false, saveUninitialized: false }))
 app.use(passport.initialize())
 app.use(passport.session())
 
-app.get("/", indexRouter)
+app.use("/", indexRouter)
 app.get("/log-out", (req, res, next) => {
     req.logOut((err) => {
         if (err) next(err);
