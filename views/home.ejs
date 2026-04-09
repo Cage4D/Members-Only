@@ -104,6 +104,14 @@
     a.join-club:hover, a.promote-admin:hover, a.sign-up:hover, a.log-in:hover {
       background-color: #4338ca;
     }
+
+    .delete-btn {
+      background-color: #dc2626;
+    }
+
+    .delete-btn:hover {
+      background-color: #b91c1c;
+    }
   </style>
 </head>
 <body>
@@ -144,6 +152,12 @@
           <div class="message-user">Posted by: Anonymous</div>
         <% } %>
         <p><%= msg.text %></p>
+
+        <% if (locals.user && locals.user.is_admin) { %>
+          <form action="/delete-message/<%= msg.id %>" method="POST" style="display:inline;">
+            <button type="submit" class="delete-btn">Delete message</button>
+          </form>
+        <% } %>
       </div>
     <% }) %>
   <% } %>
