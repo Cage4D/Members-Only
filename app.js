@@ -12,6 +12,7 @@ const pool = require("./data/pool")
 const session = require("express-session")
 const bcrypt = require("bcryptjs");
 const AdminRouter = require("./routes/AdminRouter");
+const CreateNewMessageRouter = require("./routes/CreateNewMessageRouter")
 
 app.set("views", path.join(__dirname, "views"))
 app.set("view engine", "ejs")
@@ -31,6 +32,7 @@ app.use("/log-in", LogInRouter)
 app.use("/sign-up", SignUpRouter)
 app.use("/join-club", JoinClubRouter)
 app.use("/make-admin", AdminRouter)
+app.use("/new-message", CreateNewMessageRouter)
 
 passport.use(
     new LocalStrategy(async (username, password, done) => {

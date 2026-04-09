@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Message</title>
+</head>
+<body>
+    <form action="/new-message" method="POST">
+        <label for="messageTitle">Title: </label>
+        <input type="text" id="messageTitle" minlength="3" maxlength="30" name="messageTitle" required>
+        <label for="newMessage">Enter your message: </label>
+        <textarea name="newMessage" id="newMessage" minlength="5" maxlength="150" required></textarea>
+        <button type="submit">Add Message</button>
+    </form>
+</body>
+</html>
